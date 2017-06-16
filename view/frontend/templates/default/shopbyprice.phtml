@@ -1,0 +1,24 @@
+<?php if(count($block->getPostItems()) !== 0): ?>
+    <ul class="by-price-block">
+        <?php foreach ($block->getPostItems() as $item): ?>
+            <!--Check if Enabled-->
+            <?php if($item['status']): ?>
+
+                <?php
+                $link = $block->getProductsUrl($item['price_min'], $item['price_max']);
+                $image = $block->getMediaUrl($item['featured_image']);
+                ?>
+                <li class="by-price">
+                    <a href="<?php echo $link; ?>" class="price_block">
+                        <img class="price_img" src="<?php echo $image; ?>" alt="">
+                        <span class="price_title"><?php echo trim($item['name']); ?></span>
+                    </a>
+                </li>
+
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <h2>No Blocks found</h2>
+<?php endif; ?>
+
